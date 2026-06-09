@@ -2,21 +2,27 @@ import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import Accueil from'./pages/Accueil';
 import Builds from'./pages/Builds';
+import Guides from './pages/Guides';
+import Communaute from './pages/Communaute';
 
 
 // 
 function App() {
   return (
-    <div>
+    <div className='navBar'>
       <BrowserRouter>
         <nav>
-          <Link to="/accueil">Accueil</Link>
+          <Link to="/">Accueil</Link>
           <Link to="/builds">Builds</Link>
+          <Link to="/guides">Guides</Link>
+          <Link to="/communaute">Communauté</Link>
         </nav>
 
         <Routes>
-          <Route path="/accueil" element={<Accueil />} />
+          <Route path="/" element={<Accueil />} />
           <Route path="/builds" element={<Builds />} />
+          <Route path="/guides" element={<Guides />} />
+          <Route path="/communaute" element={<Communaute />} />
         </Routes>
       </BrowserRouter>
       {/* <h1>HacknSoulz</h1> */}
