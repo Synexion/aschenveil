@@ -10,23 +10,25 @@ Ce dépôt documente mon parcours d'apprentissage et de progression vers un obje
 
 Après une formation Développeur Web & Web Mobile (Bac+2), plusieurs projets personnels et de nombreuses candidatures restées sans succès, j'ai décidé de reprendre mon apprentissage de manière plus structurée et plus proche des attentes du marché actuel.
 
-Plutôt que d'accumuler des cours ou des tutoriels, j'ai choisi d'apprendre en construisant un projet concret autour d'une de mes plus grandes passions : les Hack'n Slash et plus particulièrement Diablo 4.
+Plutôt que d'accumuler des cours ou des tutoriels, j'ai choisi d'apprendre en construisant un projet concret autour de mes plus grandes passions : l'écriture, la lecture, la programmation et les jeux vidéos.
 
 # Le projet
 
-L'objectif final est de développer une plateforme communautaire dédiée à Diablo 4 et aux Hack'n Slash en général.
+L'objectif final est de développer une plateforme communautaire dédiée à mon propre jeu actuellement en développement. J'ai donc 3 projet au total : l'écriture de l'histoire sous forme de roman, la création du site communautaire et la création du jeu. Dans ce repository on ne parlera que du site internet.
+
+Ce site me servira de portfolio
+Je préfère faire un seul énorme projet que plusieurs petits projets
 
 Le projet évoluera progressivement au fur et à mesure de mon apprentissage.
 
 À terme, la plateforme pourra proposer :
 
-* Des guides
-* Des builds de personnages
-* Des profils utilisateurs
-* Des commentaires
-* Des systèmes de notation
-* Des outils de theorycraft
+* Une présentation du jeu 
+* les devlog
+* Un forum, avec topic, commentaire, like, vote, notation et autres
 * Des ressources communautaires
+* Une page de profil, comprenant un avatar, les topic & commentaires récemment posté, et +
+* Et plus si des idées me viennent en cours de chemins ( j'ai quand même une vision assez final du site )
 
 Le but n'est pas uniquement de créer un site.
 
@@ -48,36 +50,38 @@ Le but est de construire un véritable projet permettant d'apprendre et d'utilis
 
 # Contraintes
 
-Je travaille actuellement à temps plein.
+Je travaille actuellement à temps plein en 39h.
 
 Je peux consacrer environ 1 à 2 heures par jour à cet apprentissage.
 
-L'objectif n'est donc pas d'aller vite, mais d'être régulier et discipliné sur une période d'un an.
+L'objectif n'est donc pas d'aller vite, mais d'être régulier et discipliné sur une période d'un an et/ou +.
 
 # Roadmap
 
+✅ = appris
+
 ## Étape 1 — JavaScript Moderne
 
-* Objets
-* Tableaux
-* Fonctions modernes
-* ES6+
-* JSON
-* Async / Await
+* Objets ✅ ( validé le 21/06/2026 )
+* Tableaux ✅ ( validé le 21/06/2026 )
+* Fonctions modernes ✅ ( validé le 21/06/2026 )
+* ES6+ ✅ ( validé le 21/06/2026 ) 
+* JSON ✅ ( validé le 21/06/2026 )
+* Async / Await ✅ ( validé le 21/06/2026 )
 
 ## Étape 2 — Git & GitHub
 
-* Gestion de versions
-* Travail collaboratif
-* Bonnes pratiques professionnelles
+* Gestion de versions ✅ ( validé le 21/06/2026 )
+* Travail collaboratif 
+* Bonnes pratiques professionnelles ✅ ( validé le 21/06/2026 )
 
 ## Étape 3 — React
 
-* Composants
-* Props
-* State
-* Hooks
-* Communication avec une API
+* Composants ✅ ( validé le 21/06/2026 )
+* Props ✅ ( validé le 21/06/2026 )
+* State ✅ ( validé le 21/06/2026 )
+* Hooks 
+* Communication avec une API 
 
 ## Étape 4 — API REST
 
