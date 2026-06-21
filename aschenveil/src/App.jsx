@@ -10,13 +10,13 @@ import Taverne from './pages/taverne';
 function App() {
   return (
     <div style={{backgroundImage: "url('/body_bg.png')"}} className='bg-cover bg-center min-h-screen'>
-      <div className='bg-black/60 min-h-screen'>
+      <div className='bg-black/70 min-h-screen'>
         <BrowserRouter>
-          <nav className='bg-transparent flex justify-center gap-6 px-8 py-4 text-white'>
+          <nav className='bg-black/30 flex justify-center gap-6 px-8 py-4 text-white'>
             <Link className='text-gray-300 hover:text-white' to="/">Aschenveil</Link>
             <Link className='text-gray-300 hover:text-white' to="/echos">Les Echos</Link>
             <Link className='text-gray-300 hover:text-white' to="/taverne">La Taverne</Link>
-            <Link className='text-gray-300 hover:text-white' to="/fiche">Ma fiche</Link>
+            <Link className='text-gray-300 hover:text-white' to="/fiche">Ma Fiche</Link>
           </nav>
 
           <Routes>
