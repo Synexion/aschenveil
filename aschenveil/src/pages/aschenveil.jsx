@@ -15,7 +15,6 @@ function Aschenveil() {
       <Immersion img="/choix.png" title="Faites face à des choix difficile" text="Chaque action que vous faites dans le monde d'Aschenveil a un prix mais également une récompense. Débloquez des compétences dans 3 voies différentes , choisissez en une ou faites un mélange de plusieurs voies. Libérez le plein potentiel de Flynn." inverse={true} />
       <Immersion img="/aide_ignore.png" title="aidez ou ignorez ceux dans le besoin" text="Gagnez la confiance des habitants du monde d'Aschenveil en remplissant des tâches quotidiennes ou des objectifs plus grands selon leur besoin. Montrez que vous êtes digne de la confiance des différents peuples , peut être que les habitants vous accorderont leur aimabilité et plus..." inverse={false}/>
       <Immersion img="/dilemme.png" title="Faites des compromis" text=" Chacun de vos choix vous ouvriront des portes mais fermeront l'accès à d'autres. Soyez méthodique et réfléchi dans la façon dont le monde d'Aschenveil vous perçoit" inverse={true}/>
-      <Footer img="/hero.png"/>
     </div>
   )
 }

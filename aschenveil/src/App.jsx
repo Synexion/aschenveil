@@ -4,6 +4,7 @@ import Aschenveil from'./pages/aschenveil';
 import Echos from'./pages/echos';
 import Fiche from './pages/fiche';
 import Taverne from './pages/taverne';
+import Footer from './components/footer';
 
 
 // 
@@ -25,11 +26,12 @@ function App() {
             <Route path="/taverne" element={<Taverne />} />
             <Route path="/fiche" element={<Fiche />} />
           </Routes>
+          <Footer img="/hero.png"/>
         </BrowserRouter>
+
 
         {/* Exercice d'entrainement */}
 
-        {/* <h1>HacknSoulz</h1> */}
         {/* <PersonnageNom nom="Synexion" classe="Sacresprit"></PersonnageNom>
         <PersonnageNom nom="Ellana" classe="Voleuse"></PersonnageNom>
         <Compteur></Compteur>
@@ -44,6 +46,7 @@ function App() {
         <ListeCommentaires></ListeCommentaires>
         <ListeTodos></ListeTodos> */}
       </div>
+
     </div>
   );
   
