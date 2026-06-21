@@ -2,7 +2,7 @@
 
 import Hero from "../components/hero";
 
-function Accueil() {
+function Aschenveil() {
   return(
     <div>
       <Hero />
@@ -10,4 +10,4 @@ function Accueil() {
   )
 }
 
-export default Accueil;
+export default Aschenveil;

@@ -1,4 +1,4 @@
-function Builds() {
+function Echos() {
   return(
     <div>
       <h1>Builds</h1>
@@ -7,4 +7,4 @@ function Builds() {
   );
 }
 
-export default Builds;
+export default Echos;

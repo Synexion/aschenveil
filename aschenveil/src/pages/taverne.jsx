@@ -1,4 +1,4 @@
-function Communaute (){
+function Taverne (){
   return(
     <div className="titreCommunaute">
       <h1>La place publique !</h1>
@@ -6,4 +6,4 @@ function Communaute (){
   )
 }
 
-export default Communaute;
+export default Taverne;
