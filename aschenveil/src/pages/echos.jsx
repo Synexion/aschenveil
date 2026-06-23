@@ -1,4 +1,4 @@
-import PostEchos from "../components/postEcho";
+import Topic from "../components/topic.jsx";
 import { useState } from "react";
 
 const posts = [
@@ -9,7 +9,7 @@ const posts = [
 
 
 
-function Echos() {
+function Topics() {
   
   const [tagActif, setTagActif] = useState(null);
   const [search, setSearch] = useState("");
@@ -46,11 +46,11 @@ function Echos() {
           </div>
         </div>
         <div className="">
-          {postFiltres.length === 0 ? <p className="text-white bg-black/60 p-5 rounded-lg">Aucun Echos</p> : postFiltres.map(post => (<PostEchos key={post.id}  title={post.title} underT={post.underT} auth={post.auth} tag={post.tag} date={post.date} text={post.text} />))}
+          {postFiltres.length === 0 ? <p className="text-white bg-black/60 p-5 rounded-lg">Aucun Echos</p> : postFiltres.map(post => (<Topic key={post.id}  title={post.title} underT={post.underT} auth={post.auth} tag={post.tag} date={post.date} text={post.text} />))}
         </div>
       </div>
     </div>
   );
 }
 
-export default Echos;
+export default Topics;

@@ -1,4 +1,4 @@
-function PostEchos({title,underT,text,auth,date,tag}){
+function Topic({title,underT,text,auth,date,tag}){
   return(
     <div className="w-200 text-white bg-black/70 flex flex-col m-5 rounded-xl">
       <div className="p-5">
@@ -21,4 +21,4 @@ function PostEchos({title,underT,text,auth,date,tag}){
   );
 }
 
-export default PostEchos;
+export default Topic;
