@@ -1,11 +1,7 @@
 import Topic from "../components/topic.jsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const posts = [
-  {id:"1", title:"teSt", underT:"Informations sur l'équipe et sur la direction artistique du jeu & de l'univers du jeu", auth:"Synexion - STAFF", tag:["Annonce"], date:"21/06/2026", text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint quibusdam iure iusto quia similique. Ipsa a obcaecati harum quam iusto ipsum accusantium eos quae!"},
-  {id:"2", title:"présentation", underT:"Informations sur l'équipe et sur la direction artistique du jeu & de l'univers du jeu", auth:"Synexion - STAFF", tag:["Important"], date:"21/06/2026", text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint quibusdam iure iusto quia similique. Ipsa a obcaecati harum quam iusto ipsum accusantium eos quae!"},
-  {id:"3", title:"VISION", underT:"Informations sur l'équipe et sur la direction artistique du jeu & de l'univers du jeu", auth:"Synexion - STAFF", tag:["Annonce", "Important"], date:"21/06/2026", text:"Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint quibusdam iure iusto quia similique. Ipsa a obcaecati harum quam iusto ipsum accusantium eos quae!"}
-];
+const [posts, setPosts] = useState([]);
 
 
 
@@ -13,6 +9,12 @@ function Topics() {
   
   const [tagActif, setTagActif] = useState(null);
   const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:3000/posts")
+      .then(res => res.json())
+      .then(data => setPosts(data));
+  }, []);
 
   const postFiltres = posts.filter(post => 
   (tagActif === null || post.tag.includes(tagActif)) && 
