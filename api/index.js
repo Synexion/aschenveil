@@ -1,4 +1,5 @@
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const express = require('express');
 const {Pool} = require('pg');
@@ -37,7 +38,8 @@ app.post('/login', async (req,res) => {
   const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
   const match = await bcrypt.compare(password, result.rows[0].password);
   if(match) {
-    res.json({message : 'Connexion réussie'});
+    const token = jwt.sign({id : result.rows[0].id, pseudo: result.rows[0].pseudo}, process.env.JWT_SECRET, {expiresIn: '24h'});
+    res.json({token});
   } else {
     res.json({message :'Identifiants ou mot de passe incorrect'}); 
   }
