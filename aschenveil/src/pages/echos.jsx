@@ -1,7 +1,7 @@
 import Topic from "../components/topic.jsx";
 import { useState, useEffect } from "react";
 
-const [posts, setPosts] = useState([]);
+
 
 
 
@@ -9,6 +9,8 @@ function Topics() {
   
   const [tagActif, setTagActif] = useState(null);
   const [search, setSearch] = useState("");
+
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3000/posts")
