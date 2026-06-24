@@ -5,6 +5,7 @@ import Echos from'./pages/echos';
 import Fiche from './pages/fiche';
 import Taverne from './pages/taverne';
 import Footer from './components/footer';
+import Sub from './pages/inscription'
 
 
 // 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/echos" element={<Echos />} />
             <Route path="/taverne" element={<Taverne />} />
             <Route path="/fiche" element={<Fiche />} />
+            <Route path='/inscription' element={<Sub />}/>
           </Routes>
           <Footer img="/hero.png"/>
         </BrowserRouter>
