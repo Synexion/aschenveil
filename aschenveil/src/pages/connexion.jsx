@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 function LogIn(){
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +30,7 @@ function LogIn(){
     .then(data => {
       if(data.token) {
         localStorage.setItem('token', data.token);
-        navigate('/fiche');
+        window.location.href = '/fiche';
       } else {
         alert(data.message);
       }

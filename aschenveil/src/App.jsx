@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Link} from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate} from 'react-router-dom';
 import Aschenveil from'./pages/aschenveil';
 import Echos from'./pages/echos';
 import Fiche from './pages/fiche';
@@ -11,6 +11,9 @@ import LogIn from './pages/connexion';
 
 // 
 function App() {
+
+  const token = localStorage.getItem('token');
+
   return (
     <div style={{backgroundImage: "url('/body_bg.png')"}} className='bg-cover bg-center min-h-screen'>
       <div className='bg-black/70 min-h-screen'>
@@ -19,7 +22,7 @@ function App() {
             <Link className='text-gray-300 hover:text-white' to="/">Aschenveil</Link>
             <Link className='text-gray-300 hover:text-white' to="/echos">Les Echos</Link>
             <Link className='text-gray-300 hover:text-white' to="/taverne">La Taverne</Link>
-            <Link className='text-gray-300 hover:text-white' to="/fiche">Ma Fiche</Link>
+            {token ? <><Link to='/fiche' >Ma fiche</Link><button onClick={() => {localStorage.removeItem('token'); window.location.href = '/connexion';}}>Déconnexion</button></> : <><Link to='/inscription'>Inscription</Link><Link to='/connexion'>Connexion</Link></>}
           </nav>
 
           <Routes>

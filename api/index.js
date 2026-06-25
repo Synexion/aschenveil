@@ -45,6 +45,9 @@ app.post('/register', [body('email').isEmail(), body('password').isLength({min :
 app.post('/login', async (req,res) => {
   const {email, password} = req.body;
   const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+  if(result.rows.length === 0) {
+    return res.json({message: 'Cet email n\'existe pas'});
+  }
   const match = await bcrypt.compare(password, result.rows[0].password);
   if(match) {
     const token = jwt.sign({id : result.rows[0].id, pseudo: result.rows[0].pseudo}, process.env.JWT_SECRET, {expiresIn: '24h'});
