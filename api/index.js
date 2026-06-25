@@ -17,16 +17,40 @@ app.use(cors());
 const PORT = 3000;
 app.use(express.json());
 
-app.get('/posts', async (req, res) => {
-  const result = await pool.query('SELECT * FROM topics');
+// recupère les topic officiel en bdd
+app.get('/topics', async (req, res) => {
+  const result = await pool.query('SELECT * FROM topics WHERE officiel = true');
   res.json(result.rows);
 });
+
+// récupère les topic joueur en bdd
+app.get('/taverne', async (req, res) => {
+  const result = await pool.query('SELECT * FROM topics WHERE officiel = false');
+  res.json(result.rows);
+});
+
+app.post('/taverne', [body('title').isLength({min:15, max: 255}).trim(),body('undert').isLength({min: 10 , max: 255}).trim()] ,async (req,res) => {
+  const errors = validationResult(req);
+  if(!errors.isEmpty()){
+    return res.status(400).json({message: 'Un problème a été rencontré'});
+  } try {
+    const {title, undert,text} =  req.body;
+    // Recupere le token dans le header http envoyer par le front end -> .split coupe en deux "Bearer | token" -> [1] selectionne le token seul
+    const token = req.headers.authorization?.split(' ')[1];
+    // Vérifie si le token est valide avec la clé secrète et renvoi le contenu decoder si c'est ok
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    await pool.query('INSERT INTO topics (title,undert,text, auteur) VALUES ($1, $2,$3, $4)', [title,undert,text, decoded.pseudo]);
+    res.json({message:'topic créer !'});
+  } catch(error) {
+    res.status(400).json({message: 'un probleme a été rencontré'});
+  }
+})
 
 app.listen(PORT, () => {
   console.log(`Serveur lancé sur le port ${PORT}`);
 })
 
-
+// API Inscription
 app.post('/register', [body('email').isEmail(), body('password').isLength({min : 8}), body('pseudo').isLength({min: 3, max: 15}).trim()], async (req, res) => {
   const errors = validationResult(req);
   if(!errors.isEmpty()){
@@ -41,7 +65,7 @@ app.post('/register', [body('email').isEmail(), body('password').isLength({min :
   }
 });
 
-
+// API connexion
 app.post('/login', async (req,res) => {
   const {email, password} = req.body;
   const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);

@@ -1,26 +1,22 @@
 import Topic from "../components/topic.jsx";
 import { useState, useEffect } from "react";
 
-
-
-
-
 function Topics() {
   
   const [tagActif, setTagActif] = useState(null);
   const [search, setSearch] = useState("");
 
-  const [posts, setPosts] = useState([]);
+  const [topics, setTopics] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/posts")
+    fetch("http://localhost:3000/topics")
       .then(res => res.json())
-      .then(data => setPosts(data));
+      .then(data => setTopics(data));
   }, []);
 
-  const postFiltres = posts.filter(post => 
-  (tagActif === null || post.tag.includes(tagActif)) && 
-  (search === "" || post.title.toLowerCase().includes(search.toLowerCase())));
+  const topicsFiltres = topics.filter(topic => 
+  (tagActif === null || topic.tag.includes(tagActif)) && 
+  (search === "" || topic.title.toLowerCase().includes(search.toLowerCase())));
 
 
   return(
@@ -50,7 +46,7 @@ function Topics() {
           </div>
         </div>
         <div className="">
-          {postFiltres.length === 0 ? <p className="text-white bg-black/60 p-5 rounded-lg">Aucun Echos</p> : postFiltres.map(post => (<Topic key={post.id}  title={post.title} underT={post.underT} auth={post.auth} tag={post.tag} date={post.date} text={post.text} />))}
+          {topicsFiltres.length === 0 ? <p className="text-white bg-black/60 p-5 rounded-lg ml-83">Aucun Echos</p> : topicsFiltres.map(post => (<Topic key={post.id}  title={post.title} underT={post.underT} auth={post.auth} tag={post.tag} date={post.date} text={post.text} />))}
         </div>
       </div>
     </div>

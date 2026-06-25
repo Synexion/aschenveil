@@ -9,7 +9,7 @@ function Topic({title,underT,text,auth,date,tag}){
           <p className="ml-150">{date}</p>
         </div>
         <div>
-          <p className="flex gap-5">{tag.map(t => (
+          <p className="flex gap-5">{(tag || []).map(t => (
             <li key={t} className="list-none bg-gray-700 p-2 rounded">{t}</li>
           ))}</p>
         </div>
