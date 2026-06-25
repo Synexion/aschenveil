@@ -1,8 +1,21 @@
+import {useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const profil = {
   pseudo:"test", dateInscription:"24/06/2026", topic: [{id:1, title:"test", date:"24/06/2026"}], com: [{id:1, title:"test", date:"24/06/2026"}, {id:2, title:"test 2", date:"20/06/2026"}]
 };
 
 function Fiche (){
+
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
+
+  useEffect(() => {
+    if(!token) {
+      navigate('/connexion');
+    }
+  }, []);
+
 
   return(
     <div className="text-white flex flex-col mx-auto w-300">

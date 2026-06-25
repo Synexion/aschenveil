@@ -6,6 +6,7 @@ import Fiche from './pages/fiche';
 import Taverne from './pages/taverne';
 import Footer from './components/footer';
 import Sub from './pages/inscription'
+import LogIn from './pages/connexion';
 
 
 // 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/taverne" element={<Taverne />} />
             <Route path="/fiche" element={<Fiche />} />
             <Route path='/inscription' element={<Sub />}/>
+            <Route path='/connexion' element={<LogIn />} />
           </Routes>
           <Footer img="/hero.png"/>
         </BrowserRouter>
