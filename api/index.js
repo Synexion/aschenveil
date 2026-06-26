@@ -34,12 +34,12 @@ app.post('/taverne', [body('title').isLength({min:15, max: 255}).trim(),body('un
   if(!errors.isEmpty()){
     return res.status(400).json({message: 'Un problème a été rencontré'});
   } try {
-    const {title, undert,text} =  req.body;
+    const {title, undert,text, tag} =  req.body;
     // Recupere le token dans le header http envoyer par le front end -> .split coupe en deux "Bearer | token" -> [1] selectionne le token seul
     const token = req.headers.authorization?.split(' ')[1];
     // Vérifie si le token est valide avec la clé secrète et renvoi le contenu decoder si c'est ok
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    await pool.query('INSERT INTO topics (title,undert,text, auteur) VALUES ($1, $2,$3, $4)', [title,undert,text, decoded.pseudo]);
+    await pool.query('INSERT INTO topics (title,undert,text, tag, auteur) VALUES ($1, $2,$3, $4, $5)', [title,undert,text, tag, decoded.pseudo]);
     res.json({message:'topic créer !'});
   } catch(error) {
     res.status(400).json({message: 'un probleme a été rencontré'});

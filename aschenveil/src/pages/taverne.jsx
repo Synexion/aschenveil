@@ -16,11 +16,16 @@ function Taverne() {
   const handleSubmit = (e) => {
   e.preventDefault();
 
+    if(tag === ""){
+      alert('Veuillez choisir un tag');
+      return;
+    }
+
     fetch('http://localhost:3000/taverne', {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 
       'Authorization': `Bearer ${localStorage.getItem('token')}`},
-      body: JSON.stringify({title,undert,text,tag:[tag]})  
+      body: JSON.stringify({title,undert,text,tag: [tag]})  
     })
     .then(res => res.json())
     .then(data => {
@@ -46,8 +51,7 @@ function Taverne() {
 
 
   const topicsFiltres = topics.filter(topic => 
-  (tagActif === null || topic.tag.includes(tagActif)) && 
-  (search === "" || topic.title.toLowerCase().includes(search.toLowerCase())));
+  (tagActif === null) || topic.tag && topic.tag.some(t => t.toLowerCase() === tagActif.toLowerCase()) && (search === "" || topic.title.toLowerCase().includes(search.toLowerCase())));
 
 
   return(
@@ -71,6 +75,7 @@ function Taverne() {
             <option value="">-- Choisir un tag --</option>
             <option value="Discussion">Discussion</option>
             <option value="Decouverte">Découverte</option>
+            <option value="Annonce">Annonce</option>
           </select>
           <input type="submit" value="Valider" className="cursor-pointer"/>
         </form>
@@ -91,6 +96,10 @@ function Taverne() {
           <div className="flex">
             <input type="radio" name="filtre"  id="decouverte" onChange={() => setTagActif("Decouverte")}/>
             <label htmlFor="decouverte">Découverte</label>
+          </div>
+          <div className="flex">
+            <input type="radio" name="filtre"  id="annonce" onChange={() => setTagActif("Annonce")}/>
+            <label htmlFor="annonce">Annonce</label>
           </div>
         </div>
         <div className="">
