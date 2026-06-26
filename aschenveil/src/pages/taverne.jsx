@@ -11,6 +11,7 @@ function Taverne() {
   const [undert, setUnderT] = useState("");
   const [text, setText] = useState("");
   const [tag, setTag] = useState("");
+  const token = localStorage.getItem('token');
 
   const handleSubmit = (e) => {
   e.preventDefault();
@@ -58,19 +59,20 @@ function Taverne() {
         <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Recherchez un topic..." className="p-5 bg-black/70 rounded-lg" />
       </div>
       <div className="flex justify-end w-348 text-white">
-        <button className="cursor-pointer bg-black/70 p-5 rounded-lg" onClick={() => setAddTopicOverlay(true)}>Créer un topic</button>
+        {token ? <button className="cursor-pointer bg-black/60 p-5 rounded-lg" onClick={() => setAddTopicOverlay(true)}>Créer un topic</button> : ''}
       </div>
-      {addTopicOverlay ? <div className="fixed inset-0 bg-black/80 flex items-center justify-center text-white flex-col">
-        <form onSubmit={handleSubmit}>
+      {addTopicOverlay ? <div className="fixed inset-0 bg-black/80 flex items-center justify-center text-white flex-col ">
+        <button className="cursor-pointer mb-10 bg-black/80" onClick={() => setAddTopicOverlay(false)}>X</button>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 bg-black/50">
           <input type="text" placeholder="Entrez un titre..." onChange={e => setTitle(e.target.value)} value={title}/>
           <input type="text" placeholder="Entrez un sous titre..." onChange={e => setUnderT(e.target.value)} value={undert}/>
           <textarea placeholder="Votre texte..." onChange={e => setText(e.target.value)} value={text}></textarea>
-          <select onChange={e => setTag(e.target.value)} value={tag} className="bg-black/70">
+          <select onChange={e => setTag(e.target.value)} value={tag} className="bg-black/70 cursor-pointer">
             <option value="">-- Choisir un tag --</option>
             <option value="Discussion">Discussion</option>
             <option value="Decouverte">Découverte</option>
           </select>
-          <input type="submit" value="Valider"/>
+          <input type="submit" value="Valider" className="cursor-pointer"/>
         </form>
       </div> : ''}
       <div className="flex mx-auto w-250">
