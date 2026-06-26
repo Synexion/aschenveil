@@ -21,6 +21,7 @@ function Taverne() {
       return;
     }
 
+    // fetch vers l'api de creation de topic
     fetch('http://localhost:3000/taverne', {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 
@@ -39,6 +40,7 @@ function Taverne() {
 
   };
 
+  // fetch vers API de recuperation des topic , pour la liste des topic
   const fetchTopics = () => {
     fetch("http://localhost:3000/taverne")
       .then(res => res.json())

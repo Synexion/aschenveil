@@ -1,8 +1,10 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 
 function Fiche (){
+
+  const [profil, setProfil] = useState([]);
 
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
@@ -12,6 +14,22 @@ function Fiche (){
     if(!token) {
       navigate('/connexion');
     }
+  }, []);
+
+
+  // Récupère les infos du profil via le JWT
+  const fetchProfil = () => {
+    fetch("http://localhost:3000/profil", {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    })
+    .then(res => res.json())
+    .then(data => setProfil(data));
+  };
+
+  useEffect(() => {
+    fetchProfil();
   }, []);
 
 
@@ -26,7 +44,7 @@ function Fiche (){
           <h3>{decoded.pseudo}</h3>
         </div>
         <div>
-          <p>date inscription</p>
+          <p>{new Date(profil[0]?.created_at).toLocaleDateString('fr-FR')}</p>
         </div>
       </div>
       <div className="flex mt-5 text-center bg-black/60">

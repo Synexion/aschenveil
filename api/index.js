@@ -29,6 +29,7 @@ app.get('/taverne', async (req, res) => {
   res.json(result.rows);
 });
 
+// Insere en bdd un topic
 app.post('/taverne', [body('title').isLength({min:15, max: 255}).trim(),body('undert').isLength({min: 10 , max: 255}).trim()] ,async (req,res) => {
   const errors = validationResult(req);
   if(!errors.isEmpty()){
@@ -47,6 +48,7 @@ app.post('/taverne', [body('title').isLength({min:15, max: 255}).trim(),body('un
   }
 })
 
+// Indication port du serveur : 3000 en l'occurence
 app.listen(PORT, () => {
   console.log(`Serveur lancé sur le port ${PORT}`);
 })
@@ -79,5 +81,19 @@ app.post('/login', async (req,res) => {
     res.json({token});
   } else {
     res.json({message :'Identifiants ou mot de passe incorrect'}); 
+  }
+})
+
+// API Recupère les infos de date de création du profil
+
+app.get('/profil', async (req,res) => {
+  try{
+  const token = req.headers.authorization?.split(' ')[1];
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  const result = await pool.query('SELECT * FROM users WHERE id = $1', [decoded.id]);
+  res.json(result.rows);
+  } catch(error) {
+    res.status(400).json({message: 'un probleme a été rencontré'});
+    console.log(error);
   }
 })
