@@ -43,6 +43,7 @@ app.post('/taverne', [body('title').isLength({min:15, max: 255}).trim(),body('un
     res.json({message:'topic créer !'});
   } catch(error) {
     res.status(400).json({message: 'un probleme a été rencontré'});
+    console.log(error);
   }
 })
 
