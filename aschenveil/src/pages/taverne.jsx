@@ -22,7 +22,7 @@ function Taverne() {
     }
 
     // fetch vers l'api de creation de topic
-    fetch('${import.meta.env.VITE_API_URL}/taverne', {
+    fetch(`${import.meta.env.VITE_API_URL}/taverne`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json', 
       'Authorization': `Bearer ${localStorage.getItem('token')}`},
@@ -42,7 +42,7 @@ function Taverne() {
 
   // fetch vers API de recuperation des topic , pour la liste des topic
   const fetchTopics = () => {
-    fetch("${import.meta.env.VITE_API_URL}/taverne")
+    fetch(`${import.meta.env.VITE_API_URL}/taverne`)
       .then(res => res.json())
       .then(data => setTopics(data));
   };
