@@ -52,7 +52,7 @@ function Sub(){
     }
 
 
-    fetch('http://localhost:3000/register', {
+    fetch(`${import.meta.env.VITE_API_URL}/register`, {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({pseudo, email, password})

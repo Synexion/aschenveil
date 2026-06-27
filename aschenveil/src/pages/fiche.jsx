@@ -19,7 +19,7 @@ function Fiche (){
 
   // Récupère les infos du profil via le JWT
   const fetchProfil = () => {
-    fetch("http://localhost:3000/profil", {
+    fetch(`${import.meta.env.VITE_API_URL}/profil`, {
       headers: {
         'Authorization': `Bearer ${token}`
       }

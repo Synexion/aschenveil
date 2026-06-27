@@ -9,7 +9,7 @@ function Topics() {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/topics")
+    fetch(`${import.meta.env.VITE_API_URL}/topics`)
       .then(res => res.json())
       .then(data => setTopics(data));
   }, []);
