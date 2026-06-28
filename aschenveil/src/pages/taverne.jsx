@@ -58,15 +58,17 @@ function Taverne() {
 
   return(
     <div>
-      <div className="flex mx-auto w-120 text-white uppercase font-bold text-4xl mt-15">
-        <h2>Partagez vos sujets ici</h2>
-      </div>
-      <div className="flex w-50 mx-auto mt-25 text-white mb-5">
+      {/* titre vue topic */}
+      <h2 className="flex w-full justify-center text-white uppercase font-bold mt-5 md:mt-15 md:text-3xl lg:text-4xl">Partagez vos sujets ici</h2>
+      {/* Barre de recherche topic */}
+      <div className="flex w-full justify-center text-white mt-5 mb-5">
         <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Recherchez un topic..." className="p-5 bg-black/70 rounded-lg" />
       </div>
-      <div className="flex justify-end w-348 text-white">
-        {token ? <button className="cursor-pointer bg-black/60 p-5 rounded-lg" onClick={() => setAddTopicOverlay(true)}>Créer un topic</button> : ''}
+      {/* Btn overlay formumaire création topic */}
+      <div className="flex mt-5 mb-5 text-white px-5 justify-around">
+        {token ? <button className="cursor-pointer bg-black/60 p-3 rounded-lg" onClick={() => setAddTopicOverlay(true)}>Créer un topic</button> : ''}
       </div>
+      {/* formulaire création topic */}
       {addTopicOverlay ? <div className="fixed inset-0 bg-black/80 flex items-center justify-center text-white flex-col ">
         <button className="cursor-pointer mb-10 bg-black/80" onClick={() => setAddTopicOverlay(false)}>X</button>
         <form onSubmit={handleSubmit} className="flex flex-col gap-5 bg-black/50">
@@ -82,30 +84,29 @@ function Taverne() {
           <input type="submit" value="Valider" className="cursor-pointer"/>
         </form>
       </div> : ''}
-      <div className="flex mx-auto w-250">
-        <div className="bg-black/60 flex flex-col gap-15 text-white mt-5 p-3 self-start rounded-xl">
-          <div>
+      {/* Filtres et liste topic */}
+      <div className="flex flex-col max-w-4xl mx-auto gap-3 px-4 md:flex-row md:items-start">
+        {/* filtres */}
+        <div className="bg-black/60 flex text-white rounded-xl gap-3 px-4 p-2 md:flex-col">
+          <div className="flex items-center">
             <h3 className="font-bold">Filtres</h3>
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <input type="radio" name="filtre" id="null"  onChange={() => setTagActif(null)}/>
             <label htmlFor="null">Réinisialisé</label>
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <input type="radio" name="filtre" id="discussion" onChange={() => setTagActif("Discussion")}/>
             <label htmlFor="discussion">Discussion</label>
           </div>
-          <div className="flex">
+          <div className="flex items-center">
             <input type="radio" name="filtre"  id="decouverte" onChange={() => setTagActif("Decouverte")}/>
             <label htmlFor="decouverte">Découverte</label>
           </div>
-          <div className="flex">
-            <input type="radio" name="filtre"  id="annonce" onChange={() => setTagActif("Annonce")}/>
-            <label htmlFor="annonce">Annonce</label>
-          </div>
         </div>
-        <div className="">
-          {topicsFiltres.length === 0 ? <p className="text-white bg-black/60 p-5 rounded-lg ml-83">Aucun Topic</p> : topicsFiltres.map(post => (<Topic key={post.id}  title={post.title} underT={post.underT} auth={post.auth} tag={post.tag} date={post.date} text={post.text} />))}
+        {/* liste */}
+        <div className="flex justify-center md:self-start md:flex-1">
+          {topicsFiltres.length === 0 ? <p className="text-white bg-black/60 p-4 rounded-lg">Aucun Topic</p> : topicsFiltres.map(post => (<Topic key={post.id}  title={post.title} underT={post.underT} auth={post.auth} tag={post.tag} date={post.date} text={post.text} />))}
         </div>
       </div>
     </div>

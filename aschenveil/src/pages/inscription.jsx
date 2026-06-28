@@ -69,20 +69,21 @@ function Sub(){
   };
 
   return(
+    // div global
     <div>
-      <form onSubmit={handleSubmit} className='text-white'>
-        <div>
-          <input type="text" placeholder='Entrez un Pseudo' value={pseudo} onChange={e => setPseudo(e.target.value)}/>
-          <input type="email" placeholder="Entrez votre mail" value={email} onChange={(e => setEmail(e.target.value))}/>
-          <input type="text" placeholder="Entrez un mot de passe" value={password} onChange={e => setPassword(e.target.value)}/>
-          <input type="text" placeholder="Confirmez votre mot de passe" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
+      <form onSubmit={handleSubmit} className='text-white flex flex-col gap-5 w-full mt-15 items-center mx-auto'>
+        <div className='flex flex-col w-full gap-3 items-center'>
+          <input className='border p-2' type="text" placeholder='Entrez un Pseudo' value={pseudo} onChange={e => setPseudo(e.target.value)}/>
+          <input className='border p-2' type="email" placeholder="Entrez votre mail" value={email} onChange={(e => setEmail(e.target.value))}/>
+          <input className='border p-2' type="text" placeholder="Entrez un mot de passe" value={password} onChange={e => setPassword(e.target.value)}/>
+          <input className='border p-2' type="text" placeholder="Confirmez votre mot de passe" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
         </div>
-        <div>
+        <div className='flex gap-3 mx-auto justify-center items-center px-4'>
           <input type="checkbox" id='cgu' onChange={e => setCgu(e.target.checked)}/>
-          <label htmlFor="cgu">En cochant la case, vous reconnaissait avoir pris connaissances des CGU.</label>
+          <label htmlFor="cgu">En cochant la case, vous accepter les CGU.</label>
         </div>
         <div>
-          <input type="submit" value="S'inscrire"/>
+          <input className='border p-2' type="submit" value="S'inscrire"/>
         </div>
       </form>
     </div>

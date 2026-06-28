@@ -21,32 +21,32 @@ function Topics() {
 
   return(
     <div>
-      <div className="flex mx-auto w-120 text-white uppercase font-bold text-4xl mt-15">
-        <h2>Les Echos de nos avancé</h2>
-      </div>
-      <div className="flex w-50 mx-auto mt-25 text-white mb-5">
+      <h2 className="text-center flex justify-center mx-auto w-full mt-15 text-2xl text-white uppercase font-bold md:text-3xl lg:text-4xl">Les Echos de nos avancé</h2>
+      <div className="flex w-full justify-center mx-auto mt-15 text-white mb-5 md:mb-10">
         <input type="text" value={search} onChange={e => setSearch(e.target.value)} placeholder="Recherchez un Echos..." className="p-5 bg-black/70 rounded-lg" />
       </div>
-      <div className="flex mx-auto w-250">
-        <div className="bg-black/60 flex flex-col gap-15 text-white mt-5 p-3 self-start rounded-xl">
-          <div>
-            <h3 className="font-bold">Filtres</h3>
-          </div>
-          <div className="flex">
-            <input type="radio" name="filtre" id="null"  onChange={() => setTagActif(null)}/>
-            <label htmlFor="null">Réinisialisé</label>
-          </div>
-          <div className="flex">
-            <input type="radio" name="filtre" id="annonce" onChange={() => setTagActif("Annonce")}/>
-            <label htmlFor="annonce">Annonce</label>
-          </div>
-          <div className="flex">
-            <input type="radio" name="filtre"  id="important" onChange={() => setTagActif("Important")}/>
-            <label htmlFor="important">Important</label>
+      <div className="flex flex-col max-w-4xl mx-auto gap-3 px-4 md:flex-row md:items-start">
+        <div className="flex justify-center md:flex-col">
+          <div className="bg-black/60 flex gap-5 text-white p-2 rounded-xl md:flex-col">
+            <div>
+              <h3 className="font-bold">Filtres</h3>
+            </div>
+            <div className="flex items-center gap-2">
+              <input type="radio" name="filtre" id="null"  onChange={() => setTagActif(null)}/>
+              <label htmlFor="null">Réinisialisé</label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input type="radio" name="filtre" id="annonce" onChange={() => setTagActif("Annonce")}/>
+              <label htmlFor="annonce">Annonce</label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input type="radio" name="filtre"  id="important" onChange={() => setTagActif("Important")}/>
+              <label htmlFor="important">Important</label>
+            </div>
           </div>
         </div>
-        <div className="">
-          {topicsFiltres.length === 0 ? <p className="text-white bg-black/60 p-5 rounded-lg ml-83">Aucun Echos</p> : topicsFiltres.map(post => (<Topic key={post.id}  title={post.title} underT={post.underT} auth={post.auth} tag={post.tag} date={post.date} text={post.text} />))}
+        <div className="flex justify-center md:self-start md:flex-1">
+          {topicsFiltres.length === 0 ? <p className="text-white bg-black/60 p-4 rounded-lg">Aucun Echos</p> : topicsFiltres.map(post => (<Topic key={post.id}  title={post.title} underT={post.underT} auth={post.auth} tag={post.tag} date={post.date} text={post.text} />))}
         </div>
       </div>
     </div>

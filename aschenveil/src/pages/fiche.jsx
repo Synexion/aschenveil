@@ -34,31 +34,43 @@ function Fiche (){
 
 
   return(
-    <div className="text-white flex flex-col mx-auto w-300">
-      <div className="mx-auto w-50 text-center mt-10 uppercase font-bold bg-black/60 rounded-lg p-5">
+    // div global
+    <div className="text-white flex flex-col mx-auto w-full">
+      {/* titre */}
+      <div className="mx-auto text-center mt-10 uppercase font-bold bg-black/60 rounded-lg p-5">
         <h1>Votre fiche</h1>
       </div>
-      <div className="flex items-center text-center gap-5 justify-around mt-5 bg-black/70 p-5">
-        <div>
-          <img src="/hero.png" alt="avatar" className="h-20 w-20" />
-          <h3>{decoded.pseudo}</h3>
+      {/* infos profil , pseudo + date création */}
+      <div className="flex w-full justify-center">
+        <div className='flex justify-around gap-5 bg-black/70 mt-5 p-5 rounded-lg'>
+          <div>
+            {/* img avatar profil à mettre ici plus tard */}
+            <h3>{decoded.pseudo}</h3>
+          </div>
+          <div>
+            <p>{new Date(profil[0]?.created_at).toLocaleDateString('fr-FR')}</p>
+          </div>
         </div>
-        <div>
-          <p>{new Date(profil[0]?.created_at).toLocaleDateString('fr-FR')}</p>
+      </div>
+      {/* recap topic créer */}
+      <div className='flex flex-col mx-auto bg-black/70 rounded-lg p-5 mt-5'>
+        <div className="flex text-center">
+          <h2 className="uppercase font-bold">topic créer</h2>
+        </div>
+        <div className="flex text-center">
+          <p>bientot disponible</p>
         </div>
       </div>
-      <div className="flex mt-5 text-center bg-black/60">
-        <h2 className="uppercase font-bold">topic créer</h2>
+      {/* recap commentaire créer */}
+      <div className='flex flex-col mx-auto bg-black/70 rounded-lg p-5 mt-5'>
+        <div className="flex text-center">
+          <h2 className="uppercase font-bold">Commentaire créer</h2>
+        </div>
+        <div className="flex">
+          <p>bientot disponible</p>
+        </div>
       </div>
-      <div className="flex mt-5 text-center bg-black/60">
-        <p>bientot disponible</p>
-      </div>
-      <div className="flex mt-5 text-center bg-black/60">
-        <h2 className="uppercase font-bold">Commentaire créer</h2>
-      </div>
-      <div className="flex mt-5  flex-col gap-5">
-        <p>bientot disponible</p>
-      </div>
+
     </div>
   )
 }

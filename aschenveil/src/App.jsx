@@ -13,16 +13,28 @@ import LogIn from './pages/connexion';
 function App() {
 
   const token = localStorage.getItem('token');
+  const [menuBurger, setMenuBurger] = useState(false);
 
   return (
     <div style={{backgroundImage: "url('/body_bg.png')"}} className='bg-cover bg-center min-h-screen'>
       <div className='bg-black/70 min-h-screen'>
         <BrowserRouter>
           <nav className='bg-black/30 flex justify-center gap-6 px-8 py-4 text-white'>
-            <Link className='text-gray-300 hover:text-white' to="/">Aschenveil</Link>
-            <Link className='text-gray-300 hover:text-white' to="/echos">Les Echos</Link>
-            <Link className='text-gray-300 hover:text-white' to="/taverne">La Taverne</Link>
-            {token ? <><Link to='/fiche' >Ma fiche</Link><button onClick={() => {localStorage.removeItem('token'); window.location.href = '/connexion';}}>Déconnexion</button></> : <><Link to='/inscription'>Inscription</Link><Link to='/connexion'>Connexion</Link></>}
+            <button className='md:hidden' onClick={() => setMenuBurger(!menuBurger)}>☰ Navigation</button>
+            
+            <div className='hidden md:gap-6 md:flex'>
+              <Link className='text-gray-300 hover:text-white' to="/">Aschenveil</Link>
+              <Link className='text-gray-300 hover:text-white' to="/echos">Les Echos</Link>
+              <Link className='text-gray-300 hover:text-white' to="/taverne">La Taverne</Link>
+              {token ? <><Link to='/fiche' >Ma fiche</Link><button onClick={() => {localStorage.removeItem('token'); window.location.href = '/connexion';}}>Déconnexion</button></> : <><Link to='/inscription'>Inscription</Link><Link to='/connexion'>Connexion</Link></>}
+            </div>
+
+            {menuBurger && <div className='flex flex-col md:gap-6 md:flex md:hidden'>
+              <Link className='text-gray-300 hover:text-white' to="/">Aschenveil</Link>
+              <Link className='text-gray-300 hover:text-white' to="/echos">Les Echos</Link>
+              <Link className='text-gray-300 hover:text-white' to="/taverne">La Taverne</Link>
+              {token ? <><Link to='/fiche' >Ma fiche</Link><button onClick={() => {localStorage.removeItem('token'); window.location.href = '/connexion';}}>Déconnexion</button></> : <><Link to='/inscription'>Inscription</Link><Link to='/connexion'>Connexion</Link></>}
+            </div>}
           </nav>
 
           <Routes>

@@ -39,14 +39,16 @@ function LogIn(){
   };
 
   return(
+    // div global
     <div>
-      <form onSubmit={handleSubmit} className='text-white'>
-        <div>
-          <input type="email" placeholder="Entrez votre mail" value={email} onChange={(e => setEmail(e.target.value))}/>
-          <input type="text" placeholder="Entrez votre mot de passe" value={password} onChange={e => setPassword(e.target.value)}/>
+      {/* form connexion */}
+      <form onSubmit={handleSubmit} className='text-white flex flex-col gap-5 w-full mt-15 items-center mx-auto'>
+        <div className='flex flex-col gap-4'>
+          <input className='border p-2' type="email" placeholder="Entrez votre mail" value={email} onChange={(e => setEmail(e.target.value))}/>
+          <input className='border p-2' type="text" placeholder="Entrez votre mot de passe" value={password} onChange={e => setPassword(e.target.value)}/>
         </div>
         <div>
-          <input type="submit" value="Se connecter"/>
+          <input className='border p-2' type="submit" value="Se connecter"/>
         </div>
       </form>
     </div>
